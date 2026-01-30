@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TheraMatch – Therapieverordnung (Wizard)</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="brand">
+      <div class="logo-dot" aria-hidden="true"></div>
+      <div>
+        <div class="title">TheraMatch</div>
+        <div class="subtitle">Therapieverordnung – Arzt-Wizard</div>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <button id="btnReloadJson" class="btn btn-ghost" type="button" title="JSON neu laden">
+        JSON neu laden
+      </button>
+      <button id="btnRestart" class="btn btn-primary" type="button">
+        Neu starten
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <div class="toprow">
+        <div class="meta">
+          <span class="pill" id="pillVersion">Version: –</span>
+          <span class="pill" id="pillUpdated">Updated: –</span>
+        </div>
+        <div class="status" id="statusText"></div>
+      </div>
+
+      <nav class="breadcrumb" id="breadcrumb"></nav>
+
+      <div id="content"></div>
+
+      <div class="footer-actions">
+        <button id="btnBack" class="btn btn-ghost" type="button" disabled>Zurück</button>
+        <div class="spacer"></div>
+        <a class="btn btn-ghost" href="#" id="btnCopySummary">Zusammenfassung kopieren</a>
+      </div>
+    </section>
+
+    <section class="card subtle">
+      <details>
+        <summary>Hinweis für Updates (JSON austauschen)</summary>
+        <div class="hint">
+          Ersetze die Datei <code>EntscheidungsbaumTheraMatch.json</code> im Repo. Danach GitHub Pages neu laden.
+          Wenn du alte Inhalte siehst: Browser <b>Hard Refresh</b> (Ctrl+F5).
+        </div>
+      </details>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
