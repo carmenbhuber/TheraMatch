@@ -146,10 +146,10 @@
     {
       "id": "Q_L_PAED_ODER_MED",
       "type": "question",
-      "question": "Ist es eher pädagogische Logopädie (Spracherwerb/Schule) und das Kind ist 0 bis Ende Lehre?",
+      "question": "Ist es ein Geburtsgebrechen?",
       "answers": [
-        { "label": "Ja (pädagogisch)", "next": "Q_L_KANTON" },
-        { "label": "Nein / eher medizinisch", "next": "Q_L_MED_KVG" }
+        { "label": "Ja", "next": "Q_L_KANTON" },
+        { "label": "Nein (neuro/Schlaganfall)", "next": "Q_L_MED_KVG" }
       ]
     },
     {
@@ -202,5 +202,6 @@
     }
   ]
 }
+
 
 
