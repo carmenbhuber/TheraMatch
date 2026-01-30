@@ -11,8 +11,8 @@
       "question": "Wo findet die Behandlung statt?",
       "help": "Wähle den Kontext, damit der richtige Prozess (KISIM Kurve vs. Verordnung) ausgelöst wird.",
       "answers": [
-        { "label": "Stationär (im Spital)", "next": "Q_STATIONAER_DISZIPLIN" },
-        { "label": "Ambulant (extern / nach Hause)", "next": "Q_AMB_DISZIPLIN" }
+        { "label": "Stationär", "next": "Q_STATIONAER_DISZIPLIN" },
+        { "label": "Ambulant", "next": "Q_AMB_DISZIPLIN" }
       ]
     },
 
@@ -202,3 +202,4 @@
     }
   ]
 }
+
