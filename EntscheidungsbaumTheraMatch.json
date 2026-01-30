@@ -1,0 +1,157 @@
+{
+  "startNodeId": "Q_SETTING",
+  "nodes": [
+    {
+      "id": "Q_SETTING",
+      "type": "question",
+      "question": "Wo findet die Behandlung statt?",
+      "answers": [
+        { "label": "Stationär (im Spital)", "next": "Q_STATIONAER_DISZIPLIN" },
+        { "label": "Ambulant (extern/nach Hause)", "next": "Q_AMB_DISZIPLIN" }
+      ]
+    },
+
+    {
+      "id": "Q_STATIONAER_DISZIPLIN",
+      "type": "question",
+      "question": "Welche Therapie brauchst du?",
+      "answers": [
+        { "label": "Physio", "next": "R_ST_KISIM_KURVE" },
+        { "label": "Ergo", "next": "R_ST_KISIM_KURVE" },
+        { "label": "Logo", "next": "R_ST_KISIM_KURVE" },
+        { "label": "Mehrere", "next": "R_ST_KISIM_KURVE" }
+      ]
+    },
+
+    {
+      "id": "R_ST_KISIM_KURVE",
+      "type": "result",
+      "title": "To-do (Stationär)",
+      "bullets": [
+        "Therapie-Anmeldung in KISIM (Kurve) erstellen.",
+        "Disziplin(en) auswählen und Auftrag/Ziel kurz angeben (was soll erreicht/abgeklärt werden?)."
+      ],
+      "tags": ["KISIM-Kurve", "Stationär"]
+    },
+
+    {
+      "id": "Q_AMB_DISZIPLIN",
+      "type": "question",
+      "question": "Welche Therapie möchtest du verordnen?",
+      "answers": [
+        { "label": "Physio", "next": "Q_P_GEBURTSGEBRECHEN" },
+        { "label": "Ergo", "next": "Q_E_ABKLAERUNG" },
+        { "label": "Logo", "next": "Q_L_PAED_ODER_MED" }
+      ]
+    },
+
+    {
+      "id": "Q_P_GEBURTSGEBRECHEN",
+      "type": "question",
+      "question": "Hängt die Einschränkung primär mit einem Geburtsgebrechen zusammen (IV ist/war involviert)?",
+      "answers": [
+        { "label": "Ja / vermutlich", "next": "R_AMB_VO_KISIM_IV_HINT" },
+        { "label": "Nein / unklar", "next": "R_AMB_VO_KISIM_STANDARD" }
+      ]
+    },
+
+    {
+      "id": "R_AMB_VO_KISIM_IV_HINT",
+      "type": "result",
+      "title": "To-do (Ambulant Physio – IV wahrscheinlich)",
+      "bullets": [
+        "Verordnung in KISIM erstellen (Berichte → Verordnungen).",
+        "Auf der VO den Bezug zum Geburtsgebrechen klar nennen.",
+        "Durchführungsort korrekt angeben (z.B. Schule vs Kispi).",
+        "Hinweis: Zusatz/Änderungen (z.B. zusätzliche Therapie) können Anpassungen im IV-Prozess auslösen."
+      ],
+      "tags": ["KISIM-VO", "Ambulant", "Physio", "IV"]
+    },
+
+    {
+      "id": "R_AMB_VO_KISIM_STANDARD",
+      "type": "result",
+      "title": "To-do (Ambulant Physio – Standard)",
+      "bullets": [
+        "Verordnung in KISIM erstellen (Berichte → Verordnungen).",
+        "Diagnose/Fragestellung möglichst spezifisch angeben.",
+        "Hinweis: Bei längerer/aufwändiger Therapie kann später KoGu/neue VO nötig sein."
+      ],
+      "tags": ["KISIM-VO", "Ambulant", "Physio"]
+    },
+
+    {
+      "id": "Q_E_ABKLAERUNG",
+      "type": "question",
+      "question": "Geht es um Abklärung oder Therapie?",
+      "answers": [
+        { "label": "Abklärung", "next": "R_E_ABKLAERUNG" },
+        { "label": "Therapie", "next": "R_E_THERAPIE" }
+      ]
+    },
+
+    {
+      "id": "R_E_ABKLAERUNG",
+      "type": "result",
+      "title": "To-do (Ambulant Ergo – Abklärung)",
+      "bullets": [
+        "Verordnung in KISIM erstellen (Berichte → Verordnungen).",
+        "Abklärung definieren (typisch 2 Termine + kurzer Bericht)."
+      ],
+      "tags": ["KISIM-VO", "Ambulant", "Ergo"]
+    },
+
+    {
+      "id": "R_E_THERAPIE",
+      "type": "result",
+      "title": "To-do (Ambulant Ergo – Therapie)",
+      "bullets": [
+        "Verordnung in KISIM erstellen (Berichte → Verordnungen).",
+        "Diagnose/medizinische Komplexität so formulieren, dass sie nachvollziehbar ist.",
+        "Hinweis: KoGu-Prozess ist möglich/üblich."
+      ],
+      "tags": ["KISIM-VO", "Ambulant", "Ergo"]
+    },
+
+    {
+      "id": "Q_L_PAED_ODER_MED",
+      "type": "question",
+      "question": "Ist es eher pädagogische Logopädie (Spracherwerb/Schule) und das Kind ist 0 bis Ende Lehre?",
+      "answers": [
+        { "label": "Ja (pädagogisch)", "next": "Q_L_KANTON" },
+        { "label": "Nein / eher medizinisch", "next": "R_L_MED_VO" }
+      ]
+    },
+
+    {
+      "id": "Q_L_KANTON",
+      "type": "question",
+      "question": "Welcher Kanton ist zuständig?",
+      "answers": [
+        { "label": "St. Gallen (SG)", "next": "R_L_SG" },
+        { "label": "Thurgau (TG)", "next": "R_L_TG" },
+        { "label": "Appenzell AR", "next": "R_L_AR" },
+        { "label": "Graubünden (GR)", "next": "R_L_GR" },
+        { "label": "Fürstentum Liechtenstein (FL)", "next": "R_L_FL" }
+      ]
+    },
+
+    { "id": "R_L_SG", "type": "result", "title": "To-do (Logo pädagogisch – SG)", "bullets": ["Kantons-/Schulformular SG nutzen.", "Link: <LINK_SG>"], "links": [{ "label": "Formular SG", "url": "<LINK_SG>" }] },
+    { "id": "R_L_TG", "type": "result", "title": "To-do (Logo pädagogisch – TG)", "bullets": ["Kantons-/Schulformular TG nutzen.", "Link: <LINK_TG>"], "links": [{ "label": "Formular TG", "url": "<LINK_TG>" }] },
+    { "id": "R_L_AR", "type": "result", "title": "To-do (Logo pädagogisch – AR)", "bullets": ["Zuständigkeit/Finanzierung prüfen (AR hat teils eigenen Dienst).", "Link: <LINK_AR>"], "links": [{ "label": "Info/Formular AR", "url": "<LINK_AR>" }] },
+    { "id": "R_L_GR", "type": "result", "title": "To-do (Logo pädagogisch – GR)", "bullets": ["Kantons-/Schulformular GR nutzen.", "Link: <LINK_GR>"], "links": [{ "label": "Formular GR", "url": "<LINK_GR>" }] },
+    { "id": "R_L_FL", "type": "result", "title": "To-do (Logo pädagogisch – FL)", "bullets": ["Formular/Prozess FL nutzen.", "Link: <LINK_FL>"], "links": [{ "label": "Formular FL", "url": "<LINK_FL>" }] },
+
+    {
+      "id": "R_L_MED_VO",
+      "type": "result",
+      "title": "To-do (Logo medizinisch – möglich über KVG in Spezialfällen)",
+      "bullets": [
+        "Verordnung in KISIM erstellen (Berichte → Verordnungen).",
+        "Medizinischen Grund klar angeben (z.B. strukturell/organisch oder erworben-neurologisch).",
+        "Wenn unklar: Rücksprache mit Logo-Team."
+      ],
+      "tags": ["KISIM-VO", "Ambulant", "Logo"]
+    }
+  ]
+}
